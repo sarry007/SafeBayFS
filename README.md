@@ -5,10 +5,10 @@ SafeBayFS ist ein innovatives, FUSE-basiertes verschlüsseltes Dateisystem, das 
 ---
 
 ## **🔒 Was ist SafeBayFS?**
-SafeBayFS ist ein speziell entwickeltes Dateisystem, das auf **FUSE (Filesystem in Userspace)** basiert. Es ermöglicht die transparente Verschlüsselung und Speicherung von Dateien direkt auf einem Linux-System. Dabei werden zwei fortschrittliche kryptografische Algorithmen verwendet:
+SafeBayFS ist ein speziell entwickeltes Dateisystem, das auf **[FUSE (Filesystem in Userspace)](https://github.com/libfuse/libfuse)** basiert. Es ermöglicht die transparente Verschlüsselung und Speicherung von Dateien direkt auf einem Linux-System. Dabei werden zwei fortschrittliche kryptografische Algorithmen verwendet:
 
-- **POET (Pipelineable Online Encryption with Authenticated Tag)**: Gewährleistet eine sichere und performante Verschlüsselung aller gespeicherten Daten.
-- **Catena**: Eine robuste Key Derivation Function (KDF), die starke Passwörter generiert, um den Verschlüsselungsschlüssel für POET abzuleiten.
+- **[POET (Pipelineable Online Encryption with Authenticated Tag)](https://github.com/medsec/poet)**: Gewährleistet eine sichere und performante Verschlüsselung aller gespeicherten Daten.
+- **[Catena](https://github.com/medsec/catena)**: Eine robuste Key Derivation Function (KDF), die starke Passwörter generiert, um den Verschlüsselungsschlüssel für POET abzuleiten.
 
 ---
 
@@ -59,9 +59,9 @@ SafeBayFS eignet sich ideal für:
 
 ## **🔨 Technologien hinter SafeBayFS**
 
-- **FUSE**: Ermöglicht die Implementierung von Dateisystemen im Benutzermodus.
-- **POET**: Fortschrittlicher Authenticated Encryption Algorithmus, optimiert für Geschwindigkeit und Sicherheit.
-- **Catena**: Zeit- und speichereffiziente Key Derivation Function für starke Passwörter.
+- **[FUSE](https://github.com/libfuse/libfuse)**: Ermöglicht die Implementierung von Dateisystemen im Benutzermodus.
+- **[POET](https://github.com/medsec/poet)**: Fortschrittlicher Authenticated Encryption Algorithmus, optimiert für Geschwindigkeit und Sicherheit.
+- **[Catena](https://github.com/medsec/catena)**: Zeit- und speichereffiziente Key Derivation Function für starke Passwörter.
 - **Python und C**: Kombination aus hoher Effizienz und einfacher Erweiterbarkeit.
 
 ---

@@ -1,66 +1,75 @@
-# SafeBayFS - FUSE-verschlüsseltes Dateisystem
+SafeBayFS
 
-SafeBayFS ist ein FUSE-basiertes verschlüsseltes Dateisystem, das mithilfe der **POET**- und **Catena**-Algorithmen Daten sicher speichert. Dieses Projekt bietet eine robuste Lösung zur Verschlüsselung von Dateisystemen mit Funktionen wie benutzerdefinierter Schlüsselableitung und sicherer Passwortverarbeitung.
+SafeBayFS ist ein innovatives, FUSE-basiertes verschlüsseltes Dateisystem, das Datensicherheit und Benutzerfreundlichkeit miteinander verbindet. Durch die Kombination moderner Verschlüsselungstechnologien mit flexibler Linux-Integration bietet SafeBayFS eine robuste Lösung für die sichere Speicherung sensibler Daten.
 
----
+🔒 Was ist SafeBayFS?
 
-## 📂 Projektübersicht
+SafeBayFS ist ein speziell entwickeltes Dateisystem, das auf FUSE (Filesystem in Userspace) basiert. Es ermöglicht die transparente Verschlüsselung und Speicherung von Dateien direkt auf einem Linux-System. Dabei werden zwei fortschrittliche kryptografische Algorithmen verwendet:
 
+POET (Pipelineable Online Encryption with Authenticated Tag): Gewährleistet eine sichere und performante Verschlüsselung aller gespeicherten Daten.
 
-- **`bbfs.c`**: 
-  - Beinhaltet die grundlegende FUSE-Integration und spezifische Anpassungen zur Nutzung von POET für Dateioperationen (Lesen, Schreiben, Verschlüsselung).
-  - Alle relevanten Codeabschnitte sind mit `//Master` gekennzeichnet.
-  
-- **`catena-test.c`**: 
-  - Implementiert die Catena Key Derivation Function (KDF), die zur sicheren Ableitung kryptografischer Schlüssel verwendet wird.
-  
-- **Python-Skripte**:
-  - **`start_SafeBayFS.py`**: Steuert den Start von SafeBayFS, einschließlich der Authentifizierung über PAM, Schlüsselgenerierung mit Catena und Übergabe an das FUSE-System.
-  - **`pam_SafeBayFS.py`**: Startet SafeBayFS nach der Erstanmeldung des Benutzers im System.
+Catena: Eine robuste Key Derivation Function (KDF), die starke Passwörter generiert, um den Verschlüsselungsschlüssel für POET abzuleiten.
 
----
+🔧 Wie funktioniert SafeBayFS?
 
-## 📋 Voraussetzungen
+SafeBayFS integriert sich nahtlos in das Linux-Dateisystem über FUSE und nutzt folgende Sicherheitsmechanismen:
 
-### Systemvoraussetzungen:
-- **Betriebssystem**: Ubuntu oder ein vergleichbares Linux-System
-- **Paketmanager**: `apt` muss verfügbar sein
+Verschlüsselung mit POET:
 
-### Software-Abhängigkeiten:
-- Python 3
-- `pip` für Python 3
-- FUSE (Filesystem in Userspace)
-- Libsodium (für kryptografische Funktionen)
+POET verschlüsselt jede Datei auf Blockebene, wodurch selbst große Dateien effizient verarbeitet werden.
 
----
+Jede Datei wird mit einer eindeutigen Nonce (Initialisierungsvektor) und einem kryptografisch sicheren Authentifizierungstag geschützt.
 
-## 🛠 Funktionen des Makefiles
+Starke Schlüsselgenerierung mit Catena:
 
-Das **Makefile** bietet verschiedene Ziele zur Automatisierung der Installation, Konfiguration und Ausführung:
+Benutzerpasswörter werden mittels Catena in einen kryptografisch sicheren Schlüssel umgewandelt.
 
-### **Hauptziele:**
-1. **Abhängigkeiten installieren**:
-   - Überprüft und installiert Python, pip, FUSE und libsodium, falls diese nicht vorhanden sind.
-   
-2. **PAM-Konfiguration anpassen**:
-   - Konfiguriert `common-auth` und `common-session`, um das Benutzerpasswort sicher an das Python-Skript weiterzugeben.
+Catena bietet zusätzlichen Schutz gegen Brute-Force-Angriffe durch einen zeitintensiven und speichereffizienten Ableitungsprozess.
 
-3. **Projekt kompilieren**:
-   - Kompiliert die Catena-Implementierung und das FUSE-Programm.
+Transparente Integration:
 
-4. **Verzeichnisse erstellen**:
-   - Erstellt die notwendigen Verzeichnisse für das verschlüsselte Dateisystem.
+Benutzer greifen über gewohnte Dateisystem-Operationen wie Lesen und Schreiben auf verschlüsselte Dateien zu.
 
-5. **Python-Skript ausführen**:
-   - Startet das Python-Skript, um das verschlüsselte Dateisystem zu montieren.
+Die Verschlüsselung und Entschlüsselung erfolgen transparent im Hintergrund.
 
----
+🌐 Vorteile von SafeBayFS
 
-## 🚀 Verwendung
+Maximale Sicherheit: Kombiniert modernste Verschlüsselung (POET) mit starker Passwort-Ableitung (Catena).
 
-### **Makefile-Befehle**:
-Führen Sie die folgenden Befehle aus, um das Projekt zu erstellen und zu konfigurieren:
+Einfache Integration: Durch die Nutzung von FUSE benötigt SafeBayFS keine tiefgreifenden Systemänderungen.
 
-- **Alle Abhängigkeiten installieren und das Projekt kompilieren:**
-  ```bash
-  make all
+Hohe Performance: POET ermöglicht eine effiziente Verarbeitung von Dateien ohne merkbare Verzögerungen.
+
+Flexibel und portabel: Funktioniert auf allen Linux-Systemen mit FUSE-Unterstützung.
+
+Resistenz gegen Angriffe: Catena macht das System robust gegen Passwort-basierte Angriffe.
+
+📚 Einsatzmöglichkeiten
+
+SafeBayFS eignet sich ideal für:
+
+Privatanwender, die sensible Daten wie Finanzdokumente oder medizinische Unterlagen sichern möchten.
+
+Unternehmen, die Datenkonformität (z. B. DSGVO) sicherstellen müssen.
+
+Entwickler, die eine flexible Verschlüsselungslösung suchen, ohne sich tiefgehend mit Kryptografie auseinanderzusetzen.
+
+🎯 Ziele von SafeBayFS
+
+Datensicherheit: Dateien sollen während der Speicherung und Übertragung sicher verschlüsselt bleiben.
+
+Benutzerfreundlichkeit: Die Nutzung des Dateisystems soll so einfach sein wie die eines unverschlüsselten Systems.
+
+Flexibilität: Anpassung an verschiedene Anwendungsfälle durch modulare Architektur.
+
+Skalierbarkeit: Auch große Datenmengen sollen effizient verarbeitet werden.
+
+🔨 Technologien hinter SafeBayFS
+
+FUSE: Ermöglicht die Implementierung von Dateisystemen im Benutzermodus.
+
+POET: Fortschrittlicher Authenticated Encryption Algorithmus, optimiert für Geschwindigkeit und Sicherheit.
+
+Catena: Zeit- und speichereffiziente Key Derivation Function für starke Passwörter.
+
+Python und C: Kombination aus hoher Effizienz und einfacher Erweiterbarkeit.
